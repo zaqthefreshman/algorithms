@@ -24,6 +24,22 @@ func TestMergeSort(t *testing.T) {
 		j := rand.Intn(i + 1)
 		input[i], input[j] = input[j], input[i]
 	}
+	sorted, _ := MergeSort(input)
+	assert.Equal(t, expected, sorted)
+}
 
-	assert.Equal(t, expected, MergeSort(input))
+func TestMergeSortCount1(t *testing.T) {
+	input := []int{2, 6, 1, 4, 5}
+	expectedInversions := 4
+
+	_, inversions := MergeSort(input)
+	assert.Equal(t, expectedInversions, inversions)
+}
+
+func TestMergeSortCount2(t *testing.T) {
+	input := []int{1, 20, 6, 4, 5}
+	expectedInversions := 5
+
+	_, inversions := MergeSort(input)
+	assert.Equal(t, expectedInversions, inversions)
 }
